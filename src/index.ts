@@ -6,6 +6,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 import userRoute from "./routes/userRoute";
 import myRestaurantRoute from "./routes/myRestaurantRoute";
+import restaurantRoute from "./routes/restaurantRoute";
 
 mongoose
   .connect(process.env.MONGODB_URL as string)
@@ -27,6 +28,7 @@ app.get("/health", async (req: Request, res: Response) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 app.listen(7000, () => {
   console.log("Server is working on localhost:7000");
