@@ -1,7 +1,7 @@
 import mongoose, { InferSchemaType } from "mongoose";
 
 const menuItemSchema = new mongoose.Schema({
-  id: {
+  _id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     default: () => new mongoose.Types.ObjectId(),
@@ -27,4 +27,5 @@ const restaurantSchema = new mongoose.Schema({
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+
 export default Restaurant;
