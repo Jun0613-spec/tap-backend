@@ -4,9 +4,7 @@ This is a repository for a food ordering app backend with Node.js,Express,MongoD
 
 ### Frontend repository
 
-```shell
-https://github.com/Jun0613-spec/tap-frontend
-```
+[Frontend repository](https://github.com/Jun0613-spec/tap-frontend)
 
 ### Install packages
 
