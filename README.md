@@ -1,6 +1,6 @@
-# Backend for food ordering app
+# Backend for food ordering app Tap
 
-This is a repository for a food ordering app backend with Node.js,Express,MongoDB
+This is a repository for a food ordering app backend with Node.js,Express,MongoDB, Cloudinary, Stripe, Auth0
 
 ### Install packages
 
