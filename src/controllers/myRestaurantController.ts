@@ -52,7 +52,7 @@ const getMyRestaurant = async (req: Request, res: Response) => {
   try {
     const restaurant = await Restaurant.findOne({ user: req.userId });
     if (!restaurant)
-      return res.status(404).json({ message: "restaurant not found" });
+      return res.status(404).json({ message: "Restaurant not found" });
 
     res.json(restaurant);
   } catch (error) {
@@ -63,12 +63,13 @@ const getMyRestaurant = async (req: Request, res: Response) => {
 
 const createMyRestaurant = async (req: Request, res: Response) => {
   try {
-    const existRestaurant = await Restaurant.findOne({ user: req.userId });
+    const existingRestaurant = await Restaurant.findOne({ user: req.userId });
 
-    if (existRestaurant)
+    if (existingRestaurant) {
       return res
         .status(409)
         .json({ message: "User restaurant already exists" });
+    }
 
     const imageUrl = await uploadImage(req.file as Express.Multer.File);
 
