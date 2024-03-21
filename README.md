@@ -2,6 +2,12 @@
 
 This is a repository for a food ordering app backend with Node.js,Express,MongoDB, Cloudinary, Stripe, Auth0
 
+### Frontend repository
+
+```shell
+https://github.com/Jun0613-spec/tap-frontend
+```
+
 ### Install packages
 
 ```shell
@@ -20,7 +26,7 @@ CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=
 STRIPE_API_KEY=
 STRIPE_WEBHOOK_SECRET=
 ```
