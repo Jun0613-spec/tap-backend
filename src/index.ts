@@ -26,10 +26,10 @@ const interval = 30000;
 const reloadWebsite = () => {
   axios
     .get(url)
-    .then((response) => {
-      console.log("website reloded");
+    .then(() => {
+      console.log("website reloaded");
     })
-    .catch((error) => {
+    .catch((error: Error) => {
       console.error(`Error : ${error.message}`);
     });
 };
