@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
+import axios from "axios";
 
 import userRoute from "./routes/userRoute";
 import myRestaurantRoute from "./routes/myRestaurantRoute";
@@ -16,8 +17,24 @@ mongoose
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+const url = process.env.API_URL!;
+const interval = 30000;
+
+const reloadWebsite = () => {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+};
+
+setInterval(reloadWebsite, interval);
 
 const app = express();
 
