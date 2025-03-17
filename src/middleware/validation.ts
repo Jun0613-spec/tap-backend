@@ -5,7 +5,7 @@ const handleValidationErrors = async (
   req: Request,
   res: Response,
   next: NextFunction
-):Promise<any> => {
+): Promise<any> => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -25,5 +25,5 @@ export const validateUserRequest = [
     .withMessage("Postcode must be a string"),
   body("city").isString().notEmpty().withMessage("City must be a string"),
   body("country").isString().notEmpty().withMessage("Country must be a string"),
-  handleValidationErrors,
+  handleValidationErrors
 ];
