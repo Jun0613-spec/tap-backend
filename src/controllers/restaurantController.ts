@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import Restaurant from "../models/restaurant";
 
-const getRestaurant = async (req: Request, res: Response) => {
+const getRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const restaurantId = req.params.restaurantId;
 
@@ -17,7 +17,7 @@ const getRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-const searchRestaurant = async (req: Request, res: Response) => {
+const searchRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const city = req.params.city;
 

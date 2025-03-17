@@ -10,7 +10,7 @@ const STRIPE = new Stripe(process.env.STRIPE_API_KEY as string);
 const FRONTEND_URL = process.env.FRONTEND_URL as string;
 const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-const getOrder = async (req: Request, res: Response) => {
+const getOrder = async (req: Request, res: Response):Promise<any> => {
   try {
     const orders = await Order.find({ user: req.userId })
       .populate("restaurant")
@@ -23,7 +23,7 @@ const getOrder = async (req: Request, res: Response) => {
   }
 };
 
-const createCheckoutSession = async (req: Request, res: Response) => {
+const createCheckoutSession = async (req: Request, res: Response):Promise<any> => {
   try {
     const checkoutSessionRequest: CheckoutSessionRequest = req.body;
 
@@ -129,7 +129,7 @@ const createSession = async (
   return sessionData;
 };
 
-const stripeWebhookHandler = async (req: Request, res: Response) => {
+const stripeWebhookHandler = async (req: Request, res: Response):Promise<any> => {
   let event;
   try {
     const sig = req.headers["stripe-signature"];

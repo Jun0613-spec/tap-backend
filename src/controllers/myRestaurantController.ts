@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import Restaurant from "../models/restaurant";
 import Order from "../models/order";
 
-const getMyRestaurantOrder = async (req: Request, res: Response) => {
+const getMyRestaurantOrder = async (req: Request, res: Response):Promise<any> => {
   try {
     const restaurant = await Restaurant.findOne({ user: req.userId });
     if (!restaurant)
@@ -22,7 +22,7 @@ const getMyRestaurantOrder = async (req: Request, res: Response) => {
   }
 };
 
-const updateOrderStatus = async (req: Request, res: Response) => {
+const updateOrderStatus = async (req: Request, res: Response):Promise<any> => {
   try {
     const { orderId } = req.params;
     const { status } = req.body;
@@ -48,7 +48,7 @@ const updateOrderStatus = async (req: Request, res: Response) => {
   }
 };
 
-const getMyRestaurant = async (req: Request, res: Response) => {
+const getMyRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const restaurant = await Restaurant.findOne({ user: req.userId });
     if (!restaurant)
@@ -61,7 +61,7 @@ const getMyRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-const createMyRestaurant = async (req: Request, res: Response) => {
+const createMyRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const existingRestaurant = await Restaurant.findOne({ user: req.userId });
 
@@ -86,7 +86,7 @@ const createMyRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-const updateMyRestaurant = async (req: Request, res: Response) => {
+const updateMyRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const restaurant = await Restaurant.findOne({
       user: req.userId,
@@ -118,7 +118,7 @@ const updateMyRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-const deleteMyRestaurant = async (req: Request, res: Response) => {
+const deleteMyRestaurant = async (req: Request, res: Response):Promise<any> => {
   try {
     const restaurant = await Restaurant.findOneAndDelete({ user: req.userId });
     if (!restaurant)

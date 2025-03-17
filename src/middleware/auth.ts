@@ -23,7 +23,7 @@ export const jwtParse = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+):Promise<any> => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith("Bearer ")) {
