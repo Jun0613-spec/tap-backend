@@ -21,7 +21,7 @@ cloudinary.config({
 });
 
 const url = process.env.API_URL!;
-const interval = 30000;
+const interval = 300000;
 
 const reloadWebsite = () => {
   axios
@@ -34,7 +34,9 @@ const reloadWebsite = () => {
     });
 };
 
-setInterval(reloadWebsite, interval);
+if (process.env.NODE_ENV === "production") {
+  setInterval(reloadWebsite, interval);
+}
 
 const app = express();
 
@@ -43,6 +45,14 @@ app.use(cors());
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 
 app.use(express.json());
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Server is running!");
+});
+
+app.get("/test", async (req: Request, res: Response) => {
+  res.json({ message: "hello from server endpoint" });
+});
 
 app.get("/health", async (req: Request, res: Response) => {
   res.send({ message: "ok" });
