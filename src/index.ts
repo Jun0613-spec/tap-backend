@@ -22,43 +22,43 @@ cloudinary.config({
 
 const url = process.env.API_URL!;
 
-const interval = 14 * 60 * 1000; // 14 minutes
+// const interval = 14 * 60 * 1000; // 14 minutes
 
-const reloadWebsite = () => {
-  const now = new Date();
+// const reloadWebsite = () => {
+//   const now = new Date();
 
-  const ukHour = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/London",
-    hour: "numeric",
-    hour12: false
-  }).format(now);
+//   const ukHour = new Intl.DateTimeFormat("en-GB", {
+//     timeZone: "Europe/London",
+//     hour: "numeric",
+//     hour12: false
+//   }).format(now);
 
-  const hour = parseInt(ukHour, 10);
+//   const hour = parseInt(ukHour, 10);
 
-  if (hour >= 9 && hour < 21) {
-    axios
-      .get(url)
-      .then(() => {
-        console.log(
-          "✅ Pinged at",
-          now.toLocaleTimeString("en-GB", { timeZone: "Europe/London" })
-        );
-      })
-      .catch((error) => {
-        console.error("Ping error:", error.message);
-      });
-  } else {
-    console.log(
-      "Skipped ping at",
-      now.toLocaleTimeString("en-GB", { timeZone: "Europe/London" })
-    );
-  }
-};
+//   if (hour >= 9 && hour < 21) {
+//     axios
+//       .get(url)
+//       .then(() => {
+//         console.log(
+//           "✅ Pinged at",
+//           now.toLocaleTimeString("en-GB", { timeZone: "Europe/London" })
+//         );
+//       })
+//       .catch((error) => {
+//         console.error("Ping error:", error.message);
+//       });
+//   } else {
+//     console.log(
+//       "Skipped ping at",
+//       now.toLocaleTimeString("en-GB", { timeZone: "Europe/London" })
+//     );
+//   }
+// };
 
-if (process.env.NODE_ENV === "production") {
-  reloadWebsite();
-  setInterval(reloadWebsite, interval);
-}
+// if (process.env.NODE_ENV === "production") {
+//   reloadWebsite();
+//   setInterval(reloadWebsite, interval);
+// }
 
 const app = express();
 
